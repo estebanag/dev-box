@@ -1,0 +1,29 @@
+services:
+  devbox:
+    build: .
+    stdin_open: true
+    tty: true
+    network_mode: host
+    security_opt:
+      - no-new-privileges:true
+    env_file: .env
+    environment:
+      - DISPLAY  # X11
+      # This is necessary for byobu to show proper colors when reattaching.
+      - DBUS_SESSION_BUS_ADDRESS=unix:path=/tmp/dbus-session.sock
+      # This is necessary for byobu to work properly with displays.
+      - NO_AT_BRIDGE=1
+    volumes:
+      - ${WORKSPACE_DIR}:/workspace  # workspace (host dir)
+      - ./.config/nvim:/tmp/nvim-custom:ro  # nvim custom config staging (read-only)
+      - nvim-config:/home/ubuntu/.config/nvim  # full nvim config (nvim config volume)
+      - nvim-data:/home/ubuntu/.local/share/nvim  # plugin data
+      - nvim-state:/home/ubuntu/.local/state/nvim  # nvim state
+      - nvim-cache:/home/ubuntu/.cache/nvim  # nvim cache
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro  # X11 display socket (read-only)
+
+volumes:
+  nvim-config:
+  nvim-data:
+  nvim-state:
+  nvim-cache:
