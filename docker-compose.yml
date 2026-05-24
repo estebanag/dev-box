@@ -20,6 +20,7 @@ services:
       - nvim-data:/home/ubuntu/.local/share/nvim  # plugin data
       - nvim-state:/home/ubuntu/.local/state/nvim  # nvim state
       - nvim-cache:/home/ubuntu/.cache/nvim  # nvim cache
+      - maven:/home/ubuntu/.m2  # maven config and builds
       - /tmp/.X11-unix:/tmp/.X11-unix:ro  # X11 display socket (read-only)
 
 volumes:
@@ -27,3 +28,4 @@ volumes:
   nvim-data:
   nvim-state:
   nvim-cache:
+  maven:
