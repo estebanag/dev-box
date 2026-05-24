@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     ripgrep \
     htop \
     tree \
+    jq \
     build-essential \
     python3-pip \
     python3-venv \
@@ -56,6 +57,7 @@ RUN apt-get update && apt-get install -y \
     zathura \
     # dbus is required for working with zathura from nvim
     dbus \
+    xauth \
   && rm -rf /var/lib/apt/lists/*
 
 # --- Workspace dir ---
