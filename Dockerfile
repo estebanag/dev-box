@@ -2,6 +2,11 @@ FROM ubuntu:24.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=C.UTF-8
 
+# --- Make ubuntu behave as root ---
+RUN usermod -o -u 0 -g 0 ubuntu \
+  && mkdir -p /home/ubuntu \
+  && chown -R 0:0 /home/ubuntu
+
 # --- System packages ---
 RUN apt-get update && apt-get install -y \
     curl \
