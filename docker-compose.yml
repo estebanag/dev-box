@@ -10,7 +10,7 @@ services:
     environment:
       - USER=ubuntu
       - HOME=/home/ubuntu
-      - DISPLAY="${DISPLAY#localhost}"  # X11
+      - DISPLAY  # X11
       # This is necessary for byobu to show proper colors when reattaching.
       - DBUS_SESSION_BUS_ADDRESS=unix:path=/tmp/dbus-session.sock
       # This is necessary for byobu to work properly with displays.
